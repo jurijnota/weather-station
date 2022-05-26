@@ -21,7 +21,6 @@
 </html>
 
 <script>
-
   var api = {
     url: null,
     call: function (data) {
@@ -50,8 +49,8 @@
         labels: data.labels,
         datasets: [{
           label: 'Temperature (C)',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgb(52, 86, 139)',
+          borderColor: 'rgb(52, 86, 139)',
           data: data.temp_data,
         }]
       },
@@ -63,6 +62,11 @@
                   unit: 'minute'
               }
           }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
         }
       }
     };
@@ -73,8 +77,8 @@
         labels: data.labels,
         datasets: [{
           label: 'Pressure (hPa)',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgb(255, 111, 97)',
+          borderColor: 'rgb(255, 111, 97)',
           data: data.pres_data,
         }]
       },
@@ -86,6 +90,11 @@
                   unit: 'minute'
               }
           }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
         }
       }
     };
@@ -96,18 +105,27 @@
         labels: data.labels,
         datasets: [{
           label: 'Humidity (%)',
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgb(136, 176, 75)',
+          borderColor: 'rgb(136, 176, 75)',
           data: data.hum_data,
         }]
       },
       options: {
         scales: {
           x: {
-              type: 'time',
-              time: {
-                  unit: 'minute'
-              }
+            type: 'time',
+            time: {
+                unit: 'minute'
+            }
+          },
+          y: {
+            min: 0,
+            max: 100
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
           }
         }
       }
@@ -128,5 +146,4 @@
       hum_config
     );
   });
-
 </script>
