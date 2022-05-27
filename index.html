@@ -40,6 +40,14 @@
 </html>
 
 <script>
+  function toSqlDatetime(date) {
+    let dateWithOffest = new Date(date.getTime() - (date.getTimezoneOffset() * 60000));
+    return dateWithOffest
+      .toISOString()
+      .slice(0, 19)
+      .replace('T', ' ');
+  }
+
   var api = {
     url: null,
     call: function (data) {
@@ -55,12 +63,11 @@
     }
   };
 
-  var firstDate = new Date();
-  firstDate.setDate(firstDate.getDate() - 1);
+  var firstDate = new Date(Date.now() - 24*3600*1000);
 
   api.call({
     valid: true,
-    firstDate: firstDate
+    firstDate: toSqlDatetime(firstDate)
   }).done(function (data) {
     var temp_config = {
       type: 'line',
